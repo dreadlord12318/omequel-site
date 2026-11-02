@@ -1,4 +1,6 @@
 /* Omequel Santiago Real Estate - mobile-first (390) */
+/* the hidden attribute always wins over component display rules (the property filter hides cards with it) */
+[hidden]{display:none!important}
 :root{
   --navy:#0B1335;--navy2:#16214f;--gold:#D3AE34;--gold2:#E5C862;--sea:#2f8f9d;--sea-d:#1d6470;--seafoam:#e6f3f1;
   --cream:#faf7ef;--sand:#f3ecdb;--palm:#2A5B2C;--ink:#1d2340;--muted:#5b6178;--line:#E3E5EC;--white:#fff;

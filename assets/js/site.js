@@ -45,11 +45,16 @@
     var cards = [].slice.call(list.children), f = d.getElementById("filters"), cnt = d.getElementById("pcount"), empty = d.getElementById("pempty");
     var qs = new URLSearchParams(location.search);
     ["purpose", "area", "type", "max", "sort"].forEach(function (k) { if (qs.get(k) && f.elements[k]) f.elements[k].value = qs.get(k); });
+    // budgets under ₱100,000 are monthly rents, the rest are sale prices; "price on request" never matches a budget
+    function inBudget(c, max) {
+      var p = +c.dataset.price;
+      return p > 0 && p <= max && c.dataset.purpose === (max < 100000 ? "rent" : "sale");
+    }
     function run() {
       var v = { purpose: f.purpose.value, area: f.area.value, type: f.type.value, max: +f.max.value || 0, sort: f.sort.value };
       var shown = cards.filter(function (c) {
         var ok = (!v.purpose || c.dataset.purpose === v.purpose) && (!v.area || c.dataset.area === v.area) &&
-          (!v.type || c.dataset.type === v.type) && (!v.max || +c.dataset.price <= v.max);
+          (!v.type || c.dataset.type === v.type) && (!v.max || inBudget(c, v.max));
         c.hidden = !ok; return ok;
       });
       shown.sort(function (a, b) { var pa = +a.dataset.price || (v.sort === "low" ? 1e12 : -1), pb = +b.dataset.price || (v.sort === "low" ? 1e12 : -1);
