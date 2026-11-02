@@ -442,7 +442,7 @@ svg.i.b{fill:currentColor;stroke:none}
 .strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
 .strip figure{flex:0 0 72%;max-width:300px;margin:0;scroll-snap-align:start}
 @media(min-width:900px){.strip{display:grid;grid-template-columns:repeat(5,1fr)}.strip figure{max-width:none}}
-.strip img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px;cursor:zoom-in;transition:transform .4s}
+.strip img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 4%;border-radius:14px;cursor:zoom-in;transition:transform .4s}
 .strip img:hover{transform:scale(1.03)}
 .strip figcaption{font-size:12px;color:#aab3cf;margin-top:6px;line-height:1.4}
 /* sold */
